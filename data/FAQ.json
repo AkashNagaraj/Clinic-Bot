@@ -1,0 +1,356 @@
+[
+  {
+    "_id": "faq_001",
+    "question": "Do you offer Invisalign?",
+    "answer": "Yes, we offer Invisalign treatment at all our clinic locations.",
+    "created_at": "2025-07-16T12:00:00Z",
+    "updated_at": "2025-07-16T12:00:00Z"
+  },
+  {
+    "_id": "faq_002",
+    "question": "What are your clinic hours?",
+    "answer": "Our clinics are open from 9 AM to 7 PM, Monday to Saturday.",
+    "created_at": "2025-07-16T12:00:00Z",
+    "updated_at": "2025-07-16T12:00:00Z"
+  },
+  {
+    "_id": "faq_003",
+    "question": "How do I book an appointment?",
+    "answer": "You can book an appointment via our website, mobile app, or by calling the clinic directly.",
+    "created_at": "2025-07-16T12:00:00Z",
+    "updated_at": "2025-07-16T12:00:00Z"
+  },
+  {
+    "_id": "faq_004",
+    "question": "Can I reschedule my appointment?",
+    "answer": "Yes, you can reschedule up to 24 hours before your appointment through the app or by calling us.",
+    "created_at": "2025-07-16T12:00:00Z",
+    "updated_at": "2025-07-16T12:00:00Z"
+  },
+  {
+    "_id": "faq_005",
+    "question": "What services do you provide?",
+    "answer": "We offer general dentistry, cosmetic dentistry, orthodontics, implants, and pediatric care.",
+    "created_at": "2025-07-16T12:00:00Z",
+    "updated_at": "2025-07-16T12:00:00Z"
+  },
+  {
+    "_id": "faq_006",
+    "question": "Is teeth whitening available?",
+    "answer": "Yes, we provide both in-clinic and at-home teeth whitening options.",
+    "created_at": "2025-07-16T12:00:00Z",
+    "updated_at": "2025-07-16T12:00:00Z"
+  },
+  {
+    "_id": "faq_007",
+    "question": "Do you accept walk-ins?",
+    "answer": "Yes, we do accept walk-ins based on availability. However, we recommend booking an appointment.",
+    "created_at": "2025-07-16T12:00:00Z",
+    "updated_at": "2025-07-16T12:00:00Z"
+  },
+  {
+    "_id": "faq_008",
+    "question": "What dental insurance do you accept?",
+    "answer": "We accept most major dental insurance plans. Please contact us for specific providers.",
+    "created_at": "2025-07-16T12:00:00Z",
+    "updated_at": "2025-07-16T12:00:00Z"
+  },
+  {
+    "_id": "faq_009",
+    "question": "How much does a regular cleaning cost?",
+    "answer": "A standard dental cleaning costs ₹1500, but it may vary depending on the clinic and any ongoing promotions.",
+    "created_at": "2025-07-16T12:00:00Z",
+    "updated_at": "2025-07-16T12:00:00Z"
+  },
+  {
+    "_id": "faq_010",
+    "question": "Do you treat children?",
+    "answer": "Yes, we have pediatric dentists on staff to treat children of all ages.",
+    "created_at": "2025-07-16T12:00:00Z",
+    "updated_at": "2025-07-16T12:00:00Z"
+  },
+
+  // 40 more continue below...
+
+  {
+    "_id": "faq_011",
+    "question": "Do you have orthodontists on staff?",
+    "answer": "Yes, licensed orthodontists are available at select clinic locations.",
+    "created_at": "2025-07-16T12:00:00Z",
+    "updated_at": "2025-07-16T12:00:00Z"
+  },
+  {
+    "_id": "faq_012",
+    "question": "What’s your cancellation policy?",
+    "answer": "Please cancel at least 24 hours before your appointment to avoid charges.",
+    "created_at": "2025-07-16T12:00:00Z",
+    "updated_at": "2025-07-16T12:00:00Z"
+  },
+  {
+    "_id": "faq_013",
+    "question": "Are weekend appointments available?",
+    "answer": "Yes, we offer appointments on Saturdays and limited slots on Sundays.",
+    "created_at": "2025-07-16T12:00:00Z",
+    "updated_at": "2025-07-16T12:00:00Z"
+  },
+  {
+    "_id": "faq_014",
+    "question": "Do you have parking available?",
+    "answer": "Yes, most of our clinics provide free on-site parking for patients.",
+    "created_at": "2025-07-16T12:00:00Z",
+    "updated_at": "2025-07-16T12:00:00Z"
+  },
+  {
+    "_id": "faq_015",
+    "question": "Where is your clinic located?",
+    "answer": "We have over 25 locations. Visit our website to find the nearest clinic.",
+    "created_at": "2025-07-16T12:00:00Z",
+    "updated_at": "2025-07-16T12:00:00Z"
+  },
+  {
+    "_id": "faq_016",
+    "question": "Do I need a referral to book?",
+    "answer": "No referral is needed. You can book directly through our app or website.",
+    "created_at": "2025-07-16T12:00:00Z",
+    "updated_at": "2025-07-16T12:00:00Z"
+  },
+  {
+    "_id": "faq_017",
+    "question": "How long does a dental cleaning take?",
+    "answer": "A regular cleaning typically takes 30 to 45 minutes.",
+    "created_at": "2025-07-16T12:00:00Z",
+    "updated_at": "2025-07-16T12:00:00Z"
+  },
+  {
+    "_id": "faq_018",
+    "question": "Do you treat dental emergencies?",
+    "answer": "Yes, we prioritize emergency appointments and walk-ins are accepted in such cases.",
+    "created_at": "2025-07-16T12:00:00Z",
+    "updated_at": "2025-07-16T12:00:00Z"
+  },
+  {
+    "_id": "faq_019",
+    "question": "What should I bring for my first visit?",
+    "answer": "Please bring your ID, insurance details, and any medical history documents.",
+    "created_at": "2025-07-16T12:00:00Z",
+    "updated_at": "2025-07-16T12:00:00Z"
+  },
+  {
+    "_id": "faq_020",
+    "question": "Do you offer payment plans?",
+    "answer": "Yes, flexible payment plans are available for many treatments.",
+    "created_at": "2025-07-16T12:00:00Z",
+    "updated_at": "2025-07-16T12:00:00Z"
+  },
+  {
+    "_id": "faq_021",
+    "question": "Do you offer dental implants?",
+    "answer": "Yes, we provide dental implant services including consultation, surgery, and follow-ups.",
+    "created_at": "2025-07-16T12:00:00Z",
+    "updated_at": "2025-07-16T12:00:00Z"
+  },
+  {
+    "_id": "faq_022",
+    "question": "How often should I get a dental check-up?",
+    "answer": "We recommend visiting your dentist every 6 months for a routine check-up and cleaning.",
+    "created_at": "2025-07-16T12:00:00Z",
+    "updated_at": "2025-07-16T12:00:00Z"
+  },
+  {
+    "_id": "faq_023",
+    "question": "Do you offer braces for adults?",
+    "answer": "Yes, we offer both traditional braces and clear aligners for adults.",
+    "created_at": "2025-07-16T12:00:00Z",
+    "updated_at": "2025-07-16T12:00:00Z"
+  },
+  {
+    "_id": "faq_024",
+    "question": "Can I get a second opinion at your clinic?",
+    "answer": "Yes, we offer second opinions and detailed treatment plans upon request.",
+    "created_at": "2025-07-16T12:00:00Z",
+    "updated_at": "2025-07-16T12:00:00Z"
+  },
+  {
+    "_id": "faq_025",
+    "question": "Do you provide sedation dentistry?",
+    "answer": "Yes, sedation options are available for patients with dental anxiety or special needs.",
+    "created_at": "2025-07-16T12:00:00Z",
+    "updated_at": "2025-07-16T12:00:00Z"
+  },
+  {
+    "_id": "faq_026",
+    "question": "Is root canal treatment available?",
+    "answer": "Yes, our endodontists perform root canal procedures with advanced equipment for comfort and precision.",
+    "created_at": "2025-07-16T12:00:00Z",
+    "updated_at": "2025-07-16T12:00:00Z"
+  },
+  {
+    "_id": "faq_027",
+    "question": "How do I transfer my dental records?",
+    "answer": "You can email or upload your previous dental records through our secure patient portal.",
+    "created_at": "2025-07-16T12:00:00Z",
+    "updated_at": "2025-07-16T12:00:00Z"
+  },
+  {
+    "_id": "faq_028",
+    "question": "Do you offer cosmetic dentistry?",
+    "answer": "Yes, we provide veneers, whitening, bonding, and smile makeovers under cosmetic dentistry.",
+    "created_at": "2025-07-16T12:00:00Z",
+    "updated_at": "2025-07-16T12:00:00Z"
+  },
+  {
+    "_id": "faq_029",
+    "question": "Are your dentists certified?",
+    "answer": "Yes, all our dentists are licensed professionals with years of clinical experience and training.",
+    "created_at": "2025-07-16T12:00:00Z",
+    "updated_at": "2025-07-16T12:00:00Z"
+  },
+  {
+    "_id": "faq_030",
+    "question": "Do you offer emergency dental care?",
+    "answer": "Yes, we provide priority service for dental emergencies. Call us immediately if you’re in pain.",
+    "created_at": "2025-07-16T12:00:00Z",
+    "updated_at": "2025-07-16T12:00:00Z"
+  },
+  {
+    "_id": "faq_031",
+    "question": "What if I miss my appointment?",
+    "answer": "If you miss your appointment without 24-hour notice, a cancellation fee may apply.",
+    "created_at": "2025-07-16T12:00:00Z",
+    "updated_at": "2025-07-16T12:00:00Z"
+  },
+  {
+    "_id": "faq_032",
+    "question": "How do I update my contact details?",
+    "answer": "You can update your profile information through our app or by contacting the front desk.",
+    "created_at": "2025-07-16T12:00:00Z",
+    "updated_at": "2025-07-16T12:00:00Z"
+  },
+  {
+    "_id": "faq_033",
+    "question": "Do you offer family dental packages?",
+    "answer": "Yes, we offer customized family dental plans with bundled pricing. Contact us for more details.",
+    "created_at": "2025-07-16T12:00:00Z",
+    "updated_at": "2025-07-16T12:00:00Z"
+  },
+  {
+    "_id": "faq_034",
+    "question": "Is fluoride treatment available?",
+    "answer": "Yes, fluoride treatment is part of our preventive care services for both adults and children.",
+    "created_at": "2025-07-16T12:00:00Z",
+    "updated_at": "2025-07-16T12:00:00Z"
+  },
+  {
+    "_id": "faq_035",
+    "question": "What is the cost of Invisalign?",
+    "answer": "Invisalign treatment starts at ₹50,000, depending on the complexity of the case.",
+    "created_at": "2025-07-16T12:00:00Z",
+    "updated_at": "2025-07-16T12:00:00Z"
+  },
+  {
+    "_id": "faq_036",
+    "question": "Do you offer senior citizen discounts?",
+    "answer": "Yes, we offer discounts to senior citizens. Ask at the front desk during your visit.",
+    "created_at": "2025-07-16T12:00:00Z",
+    "updated_at": "2025-07-16T12:00:00Z"
+  },
+  {
+    "_id": "faq_037",
+    "question": "Can I get a cost estimate before treatment?",
+    "answer": "Yes, our staff will provide you with a written cost estimate after your consultation.",
+    "created_at": "2025-07-16T12:00:00Z",
+    "updated_at": "2025-07-16T12:00:00Z"
+  },
+  {
+    "_id": "faq_038",
+    "question": "Do you offer digital X-rays?",
+    "answer": "Yes, we use modern digital X-ray systems for faster and safer imaging.",
+    "created_at": "2025-07-16T12:00:00Z",
+    "updated_at": "2025-07-16T12:00:00Z"
+  },
+  {
+    "_id": "faq_039",
+    "question": "Are your clinics wheelchair accessible?",
+    "answer": "Yes, all our clinics are equipped with wheelchair ramps and accessible facilities.",
+    "created_at": "2025-07-16T12:00:00Z",
+    "updated_at": "2025-07-16T12:00:00Z"
+  },
+  {
+    "_id": "faq_040",
+    "question": "What language support is available?",
+    "answer": "Our staff supports multiple languages including English, Hindi, and regional languages based on location.",
+    "created_at": "2025-07-16T12:00:00Z",
+    "updated_at": "2025-07-16T12:00:00Z"
+  },
+  {
+    "_id": "faq_041",
+    "question": "Can I view my treatment history?",
+    "answer": "Yes, your complete treatment history is available via our mobile app or patient portal.",
+    "created_at": "2025-07-16T12:00:00Z",
+    "updated_at": "2025-07-16T12:00:00Z"
+  },
+  {
+    "_id": "faq_042",
+    "question": "Do you provide wisdom tooth extraction?",
+    "answer": "Yes, our oral surgeons are experienced in performing wisdom tooth removal.",
+    "created_at": "2025-07-16T12:00:00Z",
+    "updated_at": "2025-07-16T12:00:00Z"
+  },
+  {
+    "_id": "faq_043",
+    "question": "Is dental cleaning painful?",
+    "answer": "Dental cleaning is generally not painful. We use ultrasonic scalers for a comfortable experience.",
+    "created_at": "2025-07-16T12:00:00Z",
+    "updated_at": "2025-07-16T12:00:00Z"
+  },
+  {
+    "_id": "faq_044",
+    "question": "Can I get a follow-up appointment?",
+    "answer": "Yes, follow-up appointments can be booked directly through the app or at the clinic front desk.",
+    "created_at": "2025-07-16T12:00:00Z",
+    "updated_at": "2025-07-16T12:00:00Z"
+  },
+  {
+    "_id": "faq_045",
+    "question": "Do you treat gum diseases?",
+    "answer": "Yes, our periodontists treat a range of gum diseases with both non-surgical and surgical options.",
+    "created_at": "2025-07-16T12:00:00Z",
+    "updated_at": "2025-07-16T12:00:00Z"
+  },
+  {
+    "_id": "faq_046",
+    "question": "How do I request medical certificates?",
+    "answer": "You can request treatment summaries or medical certificates from the reception or via email.",
+    "created_at": "2025-07-16T12:00:00Z",
+    "updated_at": "2025-07-16T12:00:00Z"
+  },
+  {
+    "_id": "faq_047",
+    "question": "Are gift cards available?",
+    "answer": "Yes, dental service gift cards are available for purchase at participating clinics.",
+    "created_at": "2025-07-16T12:00:00Z",
+    "updated_at": "2025-07-16T12:00:00Z"
+  },
+  {
+    "_id": "faq_048",
+    "question": "Can I choose my preferred dentist?",
+    "answer": "Yes, you can request a specific dentist while booking, subject to their availability.",
+    "created_at": "2025-07-16T12:00:00Z",
+    "updated_at": "2025-07-16T12:00:00Z"
+  },
+  {
+    "_id": "faq_049",
+    "question": "What should I do in case of a dental injury?",
+    "answer": "In case of a dental injury, contact the nearest clinic immediately or visit our emergency center.",
+    "created_at": "2025-07-16T12:00:00Z",
+    "updated_at": "2025-07-16T12:00:00Z"
+  },
+  {
+    "_id": "faq_050",
+    "question": "How do I give feedback?",
+    "answer": "You can provide feedback via our app, website, or through the feedback form at the clinic.",
+    "created_at": "2025-07-16T12:00:00Z",
+    "updated_at": "2025-07-16T12:00:00Z"
+  }
+]
+
