@@ -1,7 +1,7 @@
 from fastapi import FastAPI, Request
 from pydantic import BaseModel
 import uvicorn
-
+import requests
 from crewai import Agent, Crew, Task, Process, LLM
 from pydantic import BaseModel, Field, ValidationError
 from typing import List, Optional, Literal
@@ -9,9 +9,7 @@ from typing import List, Optional, Literal
 from langchain_redis import RedisChatMessageHistory
 from langchain.schema import HumanMessage,AIMessage
 
-from rag_implementations import query_booking_rag
-
-import json
+import json, re
 
 # Initialize Ollama LLM
 llm = LLM(
@@ -211,45 +209,99 @@ def answer(query, prev_context = []):
     result = llm.call(prompt_template)
     return result
 
-# Request model
+user_context_store = {}
+
+# Updated Request model to include user_id
 class QueryInput(BaseModel):
+    user_id: str
     query: str
 
-def preprocess_text(query):
-    import re
-    match = re.search(r"<\/?jsonstart>\s*(\{.*?\})\s*<\/?jsonend\/?>", query, re.DOTALL)
-    if match:   
-        json_data = match.group(1)
-    json_data = json.loads(json_data)
+def preprocess_text(query_response):
+    """Extract JSON from <jsonstart>...</jsonend> formatted output."""
+    match = re.search(r"<\/?jsonstart>\s*(\{.*?\})\s*<\/?jsonend\/?>", query_response, re.DOTALL)
+    if not match:
+        raise ValueError("No valid JSON found in model response.")
+    json_data = json.loads(match.group(1))
     return json_data
- 
+
+def query_booking_rag(query):
+    url = "http://localhost:8040/query_faq"
+    payload = {"query": query}
+    try:
+        response = requests.post(url, json = payload)
+        response.raise_for_status()
+        data = response.json()
+        return data.get("matches", [])
+    except requests.exceptions.RequestException as e:
+        print(f"API call failed: {e}")
+        return []
+
+def get_booking_data():
+    url = "http://localhost:8040/bookings"
+    try:
+        response = requests.get(url)
+        response.raise_for_status()
+        data = response.json()
+        return data.get("message")
+    except requests.exceptions.RequestException as e:
+        print(f"API call failed: {e}")
+        return {}
+
 @app.post("/query")
 async def process_query(data: QueryInput):
-    previous_context = []
-    continue_check = preprocess_text(classify_intent(data.query))
+    user_id = data.user_id
+    query = data.query
 
-    # if continue_check["class_type"]=="new_task":
-    #     dump_to_redis()
-    #     previous_context = []
-        
-    # domain_class = preprocess_text(classify_domain(data.query))
+    # Get or initialize context
+    previous_context = user_context_store.get(user_id, [])
 
-    query_details = preprocess_text(query_clarity(data.query))
-    print("Query Details : ", query_details)
+    # Check if this is a continuation or new task
+    continue_check = preprocess_text(classify_intent(query))
+    if continue_check["class_type"] == "new_task":
+        previous_context = []  # Clear context on new task
+
+    # Process the query using your classification agent
+    query_details = preprocess_text(query_clarity(query))
+    print("Query Details:", query_details)
+
     if query_details["class_type"].lower() == "faq":
-        rag_response = query_booking_rag(data.query)
-        print("FAQ RAG : ",rag_response)
-        previous_context.append({"agent_type":"query_clarity_agent", "query":data.query, "result":rag_response})
+        rag_response = query_booking_rag(query)
+        print("FAQ RAG:", rag_response)
+        previous_context.append({
+            "agent_type": "query_clarity_agent",
+            "query": query,
+            "result": rag_response
+        })
     elif query_details["class_type"].lower() == "booking":
-        # call booking api
-        previous_context.append({"agent_type":"query_clarity_agent", "query":data.query, "result":"The available slots are morning and night"})        
+        booking_data = get_booking_data()
+        previous_context.append({
+            "agent_type": "query_clarity_agent",
+            "query": query,
+            "result": booking_data
+        })
     elif query_details["class_type"].lower() == "vague":
-        previous_context.append({"agent_type":"query_clarity_agent", "query":data.query, "result":"The query seems vague could you please elaborate."}) 
+        previous_context.append({
+            "agent_type": "query_clarity_agent",
+            "query": query,
+            "result": "The query seems vague. Could you please elaborate?"
+        })
     else:
-        previous_context.append({"agent_type":"domain_agent", "query":data.query, "result":"Please ask a question relating to Booking/ FAQ"})
-    
-    final_response = answer(data.query, previous_context)
-    previous_context.append({"agent_type":"answer_agent", "query":data.query, "result":final_response})
+        previous_context.append({
+            "agent_type": "domain_agent",
+            "query": query,
+            "result": "Please ask a question related to Booking/FAQ"
+        })
+
+    # Final answer generation
+    final_response = answer(query, previous_context)
+    previous_context.append({
+        "agent_type": "answer_agent",
+        "query": query,
+        "result": final_response
+    })
+
+    # Update context store
+    user_context_store[user_id] = previous_context
 
     return {"response": final_response}
 

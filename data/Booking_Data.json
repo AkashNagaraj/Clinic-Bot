@@ -1,535 +1,68 @@
 [
   {
-    "clinic_name": "Smile Dental",
     "clinic_id": "clinic_001",
-    "slot": "10am-11am",
-    "availability": "Y",
-    "booked_customer": ""
+    "clinic_name": "Bright Smiles Dental",
+    "location": {
+      "address": "12 MG Road",
+      "city": "Bangalore",
+      "state": "Karnataka",
+      "pincode": "560001",
+      "latitude": 12.9716,
+      "longitude": 77.5946
+    },
+    "contact_number": "+91-9876543210",
+    "email": "contact@brightsmiles.in",
+    "rating": 4.7,
+    "specialties": ["General Dentistry", "Orthodontics", "Pediatric Dentistry"],
+    "slots": {
+      "morning": "yes",
+      "afternoon": "no",
+      "evening": "yes",
+      "night": "no"
+    }
   },
   {
-    "clinic_name": "Bright Smiles",
     "clinic_id": "clinic_002",
-    "slot": "11am-12pm",
-    "availability": "N",
-    "booked_customer": "cust_001"
+    "clinic_name": "Smile Care Clinic",
+    "location": {
+      "address": "45 Anna Salai",
+      "city": "Chennai",
+      "state": "Tamil Nadu",
+      "pincode": "600002",
+      "latitude": 13.0827,
+      "longitude": 80.2707
+    },
+    "contact_number": "+91-8765432109",
+    "email": "info@smilecarechennai.com",
+    "rating": 4.4,
+    "specialties": ["Cosmetic Dentistry", "Oral Surgery", "Implants"],
+    "slots": {
+      "morning": "no",
+      "afternoon": "yes",
+      "evening": "yes",
+      "night": "no"
+    }
   },
   {
-    "clinic_name": "Pearl Dental Care",
     "clinic_id": "clinic_003",
-    "slot": "12pm-1pm",
-    "availability": "Y",
-    "booked_customer": ""
-  },
-  {
-    "clinic_name": "Smile Dental",
-    "clinic_id": "clinic_001",
-    "slot": "1pm-2pm",
-    "availability": "N",
-    "booked_customer": "cust_002"
-  },
-  {
-    "clinic_name": "Bright Smiles",
-    "clinic_id": "clinic_002",
-    "slot": "2pm-3pm",
-    "availability": "Y",
-    "booked_customer": ""
-  },
-  {
-    "clinic_name": "Pearl Dental Care",
-    "clinic_id": "clinic_003",
-    "slot": "3pm-4pm",
-    "availability": "N",
-    "booked_customer": "cust_003"
-  },
-  {
-    "clinic_name": "Smile Dental",
-    "clinic_id": "clinic_001",
-    "slot": "4pm-5pm",
-    "availability": "Y",
-    "booked_customer": ""
-  },
-  {
-    "clinic_name": "Bright Smiles",
-    "clinic_id": "clinic_002",
-    "slot": "5pm-6pm",
-    "availability": "N",
-    "booked_customer": "cust_004"
-  },
-  {
-    "clinic_name": "Pearl Dental Care",
-    "clinic_id": "clinic_003",
-    "slot": "6pm-7pm",
-    "availability": "Y",
-    "booked_customer": ""
-  },
-  {
-    "clinic_name": "Smile Dental",
-    "clinic_id": "clinic_001",
-    "slot": "7pm-8pm",
-    "availability": "N",
-    "booked_customer": "cust_005"
-  },
-  {
-    "clinic_name": "Bright Smiles",
-    "clinic_id": "clinic_002",
-    "slot": "8pm-9pm",
-    "availability": "Y",
-    "booked_customer": ""
-  },
-  {
-    "clinic_name": "Pearl Dental Care",
-    "clinic_id": "clinic_003",
-    "slot": "9pm-10pm",
-    "availability": "N",
-    "booked_customer": "cust_006"
-  },
-  {
-    "clinic_name": "Smile Dental",
-    "clinic_id": "clinic_001",
-    "slot": "10am-11am",
-    "availability": "Y",
-    "booked_customer": ""
-  },
-  {
-    "clinic_name": "Bright Smiles",
-    "clinic_id": "clinic_002",
-    "slot": "11am-12pm",
-    "availability": "N",
-    "booked_customer": "cust_007"
-  },
-  {
-    "clinic_name": "Pearl Dental Care",
-    "clinic_id": "clinic_003",
-    "slot": "12pm-1pm",
-    "availability": "Y",
-    "booked_customer": ""
-  },
-  {
-    "clinic_name": "Smile Dental",
-    "clinic_id": "clinic_001",
-    "slot": "1pm-2pm",
-    "availability": "N",
-    "booked_customer": "cust_008"
-  },
-  {
-    "clinic_name": "Bright Smiles",
-    "clinic_id": "clinic_002",
-    "slot": "2pm-3pm",
-    "availability": "Y",
-    "booked_customer": ""
-  },
-  {
-    "clinic_name": "Pearl Dental Care",
-    "clinic_id": "clinic_003",
-    "slot": "3pm-4pm",
-    "availability": "N",
-    "booked_customer": "cust_009"
-  },
-  {
-    "clinic_name": "Smile Dental",
-    "clinic_id": "clinic_001",
-    "slot": "4pm-5pm",
-    "availability": "Y",
-    "booked_customer": ""
-  },
-  {
-    "clinic_name": "Bright Smiles",
-    "clinic_id": "clinic_002",
-    "slot": "5pm-6pm",
-    "availability": "N",
-    "booked_customer": "cust_010"
-  },
-  {
-    "clinic_name": "Pearl Dental Care",
-    "clinic_id": "clinic_003",
-    "slot": "6pm-7pm",
-    "availability": "Y",
-    "booked_customer": ""
-  },
-  {
-    "clinic_name": "Smile Dental",
-    "clinic_id": "clinic_001",
-    "slot": "7pm-8pm",
-    "availability": "N",
-    "booked_customer": "cust_011"
-  },
-  {
-    "clinic_name": "Bright Smiles",
-    "clinic_id": "clinic_002",
-    "slot": "8pm-9pm",
-    "availability": "Y",
-    "booked_customer": ""
-  },
-  {
-    "clinic_name": "Pearl Dental Care",
-    "clinic_id": "clinic_003",
-    "slot": "9pm-10pm",
-    "availability": "N",
-    "booked_customer": "cust_012"
-  },
-  {
-    "clinic_name": "Smile Dental",
-    "clinic_id": "clinic_001",
-    "slot": "10am-11am",
-    "availability": "Y",
-    "booked_customer": ""
-  },
-  {
-    "clinic_name": "Bright Smiles",
-    "clinic_id": "clinic_002",
-    "slot": "11am-12pm",
-    "availability": "N",
-    "booked_customer": "cust_013"
-  },
-  {
-    "clinic_name": "Pearl Dental Care",
-    "clinic_id": "clinic_003",
-    "slot": "12pm-1pm",
-    "availability": "Y",
-    "booked_customer": ""
-  },
-  {
-    "clinic_name": "Smile Dental",
-    "clinic_id": "clinic_001",
-    "slot": "1pm-2pm",
-    "availability": "N",
-    "booked_customer": "cust_014"
-  },
-  {
-    "clinic_name": "Bright Smiles",
-    "clinic_id": "clinic_002",
-    "slot": "2pm-3pm",
-    "availability": "Y",
-    "booked_customer": ""
-  },
-  {
-    "clinic_name": "Pearl Dental Care",
-    "clinic_id": "clinic_003",
-    "slot": "3pm-4pm",
-    "availability": "N",
-    "booked_customer": "cust_015"
-  },
-  {
-    "clinic_name": "Smile Dental",
-    "clinic_id": "clinic_001",
-    "slot": "4pm-5pm",
-    "availability": "Y",
-    "booked_customer": ""
-  },
-  {
-    "clinic_name": "Bright Smiles",
-    "clinic_id": "clinic_002",
-    "slot": "5pm-6pm",
-    "availability": "N",
-    "booked_customer": "cust_016"
-  },
-  {
-    "clinic_name": "Pearl Dental Care",
-    "clinic_id": "clinic_003",
-    "slot": "6pm-7pm",
-    "availability": "Y",
-    "booked_customer": ""
-  },
-  {
-    "clinic_name": "Smile Dental",
-    "clinic_id": "clinic_001",
-    "slot": "7pm-8pm",
-    "availability": "N",
-    "booked_customer": "cust_017"
-  },
-  {
-    "clinic_name": "Bright Smiles",
-    "clinic_id": "clinic_002",
-    "slot": "8pm-9pm",
-    "availability": "Y",
-    "booked_customer": ""
-  },
-  {
-    "clinic_name": "Pearl Dental Care",
-    "clinic_id": "clinic_003",
-    "slot": "9pm-10pm",
-    "availability": "N",
-    "booked_customer": "cust_018"
-  },
-  {
-    "clinic_name": "Smile Dental",
-    "clinic_id": "clinic_001",
-    "slot": "10am-11am",
-    "availability": "Y",
-    "booked_customer": ""
-  },
-  {
-    "clinic_name": "Bright Smiles",
-    "clinic_id": "clinic_002",
-    "slot": "11am-12pm",
-    "availability": "N",
-    "booked_customer": "cust_019"
-  },
-  {
-    "clinic_name": "Pearl Dental Care",
-    "clinic_id": "clinic_003",
-    "slot": "12pm-1pm",
-    "availability": "Y",
-    "booked_customer": ""
-  },
-  {
-    "clinic_name": "Smile Dental",
-    "clinic_id": "clinic_001",
-    "slot": "1pm-2pm",
-    "availability": "N",
-    "booked_customer": "cust_020"
-  },
-  {
-    "clinic_name": "Bright Smiles",
-    "clinic_id": "clinic_002",
-    "slot": "2pm-3pm",
-    "availability": "Y",
-    "booked_customer": ""
-  },
-  {
-    "clinic_name": "Pearl Dental Care",
-    "clinic_id": "clinic_003",
-    "slot": "3pm-4pm",
-    "availability": "N",
-    "booked_customer": "cust_021"
-  },
-  {
-    "clinic_name": "Smile Dental",
-    "clinic_id": "clinic_001",
-    "slot": "4pm-5pm",
-    "availability": "Y",
-    "booked_customer": ""
-  },
-  {
-    "clinic_name": "Bright Smiles",
-    "clinic_id": "clinic_002",
-    "slot": "5pm-6pm",
-    "availability": "N",
-    "booked_customer": "cust_022"
-  },
-  {
-    "clinic_name": "Pearl Dental Care",
-    "clinic_id": "clinic_003",
-    "slot": "6pm-7pm",
-    "availability": "Y",
-    "booked_customer": ""
-  },
-  {
-    "clinic_name": "Smile Dental",
-    "clinic_id": "clinic_001",
-    "slot": "7pm-8pm",
-    "availability": "N",
-    "booked_customer": "cust_023"
-  },
-  {
-    "clinic_name": "Smile Dental",
-    "clinic_id": "clinic_001",
-    "slot": "10am-11am",
-    "availability": "N",
-    "booked_customer": "cust_30"
-  },
-  {
-    "clinic_name": "Bright Smiles",
-    "clinic_id": "clinic_002",
-    "slot": "11am-12am",
-    "availability": "N",
-    "booked_customer": "cust_31"
-  },
-  {
-    "clinic_name": "Pearl Dental Care",
-    "clinic_id": "clinic_003",
-    "slot": "12pm-1pm",
-    "availability": "N",
-    "booked_customer": "cust_32"
-  },
-  {
-    "clinic_name": "Smile Dental",
-    "clinic_id": "clinic_001",
-    "slot": "1pm-2pm",
-    "availability": "N",
-    "booked_customer": "cust_33"
-  },
-  {
-    "clinic_name": "Bright Smiles",
-    "clinic_id": "clinic_002",
-    "slot": "2pm-3pm",
-    "availability": "N",
-    "booked_customer": "cust_34"
-  },
-  {
-    "clinic_name": "Pearl Dental Care",
-    "clinic_id": "clinic_003",
-    "slot": "3pm-4pm",
-    "availability": "N",
-    "booked_customer": "cust_35"
-  },
-  {
-    "clinic_name": "Smile Dental",
-    "clinic_id": "clinic_001",
-    "slot": "4pm-5pm",
-    "availability": "N",
-    "booked_customer": "cust_36"
-  },
-  {
-    "clinic_name": "Bright Smiles",
-    "clinic_id": "clinic_002",
-    "slot": "5pm-6pm",
-    "availability": "N",
-    "booked_customer": "cust_37"
-  },
-  {
-    "clinic_name": "Pearl Dental Care",
-    "clinic_id": "clinic_003",
-    "slot": "6pm-7pm",
-    "availability": "N",
-    "booked_customer": "cust_38"
-  },
-  {
-    "clinic_name": "Smile Dental",
-    "clinic_id": "clinic_001",
-    "slot": "7pm-8pm",
-    "availability": "N",
-    "booked_customer": "cust_39"
-  },
-  {
-    "clinic_name": "Bright Smiles",
-    "clinic_id": "clinic_002",
-    "slot": "8pm-9pm",
-    "availability": "N",
-    "booked_customer": "cust_40"
-  },
-  {
-    "clinic_name": "Pearl Dental Care",
-    "clinic_id": "clinic_003",
-    "slot": "9pm-10pm",
-    "availability": "N",
-    "booked_customer": "cust_41"
-  },
-  {
-    "clinic_name": "Smile Dental",
-    "clinic_id": "clinic_001",
-    "slot": "10am-11am",
-    "availability": "N",
-    "booked_customer": "cust_42"
-  },
-  {
-    "clinic_name": "Bright Smiles",
-    "clinic_id": "clinic_002",
-    "slot": "11am-12am",
-    "availability": "N",
-    "booked_customer": "cust_43"
-  },
-  {
-    "clinic_name": "Pearl Dental Care",
-    "clinic_id": "clinic_003",
-    "slot": "12pm-1pm",
-    "availability": "N",
-    "booked_customer": "cust_44"
-  },
-  {
-    "clinic_name": "Smile Dental",
-    "clinic_id": "clinic_001",
-    "slot": "1pm-2pm",
-    "availability": "N",
-    "booked_customer": "cust_45"
-  },
-  {
-    "clinic_name": "Bright Smiles",
-    "clinic_id": "clinic_002",
-    "slot": "2pm-3pm",
-    "availability": "N",
-    "booked_customer": "cust_46"
-  },
-  {
-    "clinic_name": "Pearl Dental Care",
-    "clinic_id": "clinic_003",
-    "slot": "3pm-4pm",
-    "availability": "N",
-    "booked_customer": "cust_47"
-  },
-  {
-    "clinic_name": "Smile Dental",
-    "clinic_id": "clinic_001",
-    "slot": "4pm-5pm",
-    "availability": "N",
-    "booked_customer": "cust_48"
-  },
-  {
-    "clinic_name": "Bright Smiles",
-    "clinic_id": "clinic_002",
-    "slot": "5pm-6pm",
-    "availability": "N",
-    "booked_customer": "cust_49"
-  },
-  {
-    "clinic_name": "Pearl Dental Care",
-    "clinic_id": "clinic_003",
-    "slot": "6pm-7pm",
-    "availability": "N",
-    "booked_customer": "cust_50"
-  },
-  {
-    "clinic_name": "Smile Dental",
-    "clinic_id": "clinic_001",
-    "slot": "7pm-8pm",
-    "availability": "N",
-    "booked_customer": "cust_51"
-  },
-  {
-    "clinic_name": "Bright Smiles",
-    "clinic_id": "clinic_002",
-    "slot": "8pm-9pm",
-    "availability": "N",
-    "booked_customer": "cust_52"
-  },
-  {
-    "clinic_name": "Pearl Dental Care",
-    "clinic_id": "clinic_003",
-    "slot": "9pm-10pm",
-    "availability": "N",
-    "booked_customer": "cust_53"
-  },
-  {
-    "clinic_name": "Smile Dental",
-    "clinic_id": "clinic_001",
-    "slot": "10am-11am",
-    "availability": "N",
-    "booked_customer": "cust_54"
-  },
-  {
-    "clinic_name": "Bright Smiles",
-    "clinic_id": "clinic_002",
-    "slot": "11am-12am",
-    "availability": "N",
-    "booked_customer": "cust_55"
-  },
-  {
-    "clinic_name": "Pearl Dental Care",
-    "clinic_id": "clinic_003",
-    "slot": "12pm-1pm",
-    "availability": "N",
-    "booked_customer": "cust_56"
-  },
-  {
-    "clinic_name": "Smile Dental",
-    "clinic_id": "clinic_001",
-    "slot": "1pm-2pm",
-    "availability": "N",
-    "booked_customer": "cust_57"
-  },
-  {
-    "clinic_name": "Bright Smiles",
-    "clinic_id": "clinic_002",
-    "slot": "2pm-3pm",
-    "availability": "N",
-    "booked_customer": "cust_58"
-  },
-  {
-    "clinic_name": "Pearl Dental Care",
-    "clinic_id": "clinic_003",
-    "slot": "3pm-4pm",
-    "availability": "N",
-    "booked_customer": "cust_59"
+    "clinic_name": "Pearl Dental Hub",
+    "location": {
+      "address": "201 FC Road",
+      "city": "Pune",
+      "state": "Maharashtra",
+      "pincode": "411004",
+      "latitude": 18.5204,
+      "longitude": 73.8567
+    },
+    "contact_number": "+91-9988776655",
+    "email": "hello@pearldentalhub.com",
+    "rating": 4.9,
+    "specialties": ["Endodontics", "Periodontics", "Prosthodontics"],
+    "slots": {
+      "morning": "yes",
+      "afternoon": "yes",
+      "evening": "no",
+      "night": "yes"
+    }
   }
 ]
-
