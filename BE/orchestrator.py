@@ -6,7 +6,12 @@ from crewai import Agent, Crew, Task, Process, LLM
 from pydantic import BaseModel, Field, ValidationError
 from typing import List, Optional, Literal
 
-# from crewai.llms import Ollama
+from langchain_redis import RedisChatMessageHistory
+from langchain.schema import HumanMessage,AIMessage
+
+from rag_implementations import query_booking_rag
+
+import json
 
 # Initialize Ollama LLM
 llm = LLM(
@@ -14,6 +19,18 @@ llm = LLM(
     temperature=0.2,
     base_url="http://localhost:11434"  # default Ollama endpoint
 )
+
+REDIS_URL = "redis://localhost:6379"
+def add_to_session(session_name, message_type, message):
+    # Use session_name as part of the Redis key
+    full_key = f"{session_name}"
+    custom_history = RedisChatMessageHistory(full_key, redis_url=REDIS_URL)
+    custom_history.add_message({"type":message_type, "message":message})
+
+def add_to_history(agent_type, user_input, agent_output):
+    history = {}
+    history.add_message(HumanMessage(content=str(user_input)))
+    history.add_message(AIMessage(content=str(agent_output)))
 
 app = FastAPI()
 
@@ -66,8 +83,7 @@ query_clarity_agent = Agent(
 )
 
 def classify_intent(query):
-    intent_task = Task( 
-    description = f"""
+    prompt_template = f"""
     You are an intent classification agent. Your job is to analyze a user's natural language query and classify it into one of two task types based on whether it represents a new request or a continuation of a previous task.
     ---
 
@@ -88,17 +104,26 @@ def classify_intent(query):
     - If the intent clearly starts a new actionable or informational task, classify as `'new_task'`.
     - If the intent is conversational or meta-linguistic (referring to prior interaction), classify as `'continue'`.
 
-    Return only the JSON output with no explanation.
+    Strictly return with the following Schema : 
+    <jsonstart>
+    {{
+        "class_type":"continue" or "new_task",
+    }}
+    <jsonend>
 
     User Query: "{query}"
 
-    """, 
-    expected_output = "A valid JSON matching the Intent_Classification schema",
-    agent = intent_agent,
-    output_json = Intent_Classification)
+    """
+
+    intent_task = Task( 
+        description = prompt_template, 
+        expected_output = "A valid JSON matching the Intent_Classification schema",
+        agent = intent_agent,
+        output_json = Intent_Classification)
 
     crew = Crew(agents=[intent_agent], tasks=[intent_task], process=Process.sequential, verbose=False)
-    result = crew.kickoff()
+    # result = crew.kickoff()
+    result = llm.call(prompt_template)
     return result
 
 def classify_domain(query):
@@ -119,11 +144,12 @@ def classify_domain(query):
         Important:
         - Output ONLY the JSON matching the above schema. Do NOT add any commentary or extra text.
 
-        Schema -
+        Strictly return with the following Schema :
+        <jsonstart>
         {{
             "class_type" : "dental" / "non-dental"
         }}
-
+        <jsonend>
         User Query: "{query}"
         """
 
@@ -133,7 +159,7 @@ def classify_domain(query):
         agent=domain_agent)
 
     crew = Crew(agents=[domain_agent], tasks=[domain_task], process=Process.sequential, verbose=False)
-    result = crew.kickoff()
+    # result = crew.kickoff()
     result = llm.call(prompt_template)
     return result
 
@@ -146,11 +172,12 @@ def query_clarity(query):
         Important:
         - Output ONLY the JSON matching the above schema. Do NOT add any commentary or extra text.
 
-        Schema -
+        Strictly return with the following Schema : - 
+        <jsonstart>
         {{
-            "class_type" : "FAQ" / "Booking" / "Other"
+            "class_type" : "FAQ" / "Booking" / "Vague"
         }}
-
+        <jsonend>
         User Query: "{query}"
         """
 
@@ -160,26 +187,27 @@ def query_clarity(query):
         agent=query_clarity_agent)
 
     crew = Crew(agents=[query_clarity_agent], tasks=[domain_task], process=Process.sequential, verbose=False)
-    result = crew.kickoff()
+    # result = crew.kickoff()
     result = llm.call(prompt_template)
     return result
 
-def answer(query, prev_context = ""):
+def answer(query, prev_context = []):
+    summary_input = [context["result"] for context in prev_context]
+    # summary_input = json.dumps(prev_context, indent=2, ensure_ascii=False)
     prompt_template = f"""
-    You are a healthcare agent. Your task is to answer the query using the previous context.
-    Return the answer in the following schema:
+    You are a helpful and knowledgeable healthcare assistant.
 
-    User Query - 
+    Your task is to read the user's query and use the prior context to generate a clear, relevant, and concise response around 10-25 words. You must extract the most important information from the context that directly relates to the current query and summarize it appropriately.
+
+    ### User Query:
     {query}
 
-    Context - 
-    {prev_context}
+    ### Prior Context:
+    {summary_input}
 
-    Schema - 
-    {{
-        "response": "answer"
-    }}
+    Based on the above, return an appropriate response.
     """
+
     result = llm.call(prompt_template)
     return result
 
@@ -187,13 +215,42 @@ def answer(query, prev_context = ""):
 class QueryInput(BaseModel):
     query: str
 
-
+def preprocess_text(query):
+    import re
+    match = re.search(r"<\/?jsonstart>\s*(\{.*?\})\s*<\/?jsonend\/?>", query, re.DOTALL)
+    if match:   
+        json_data = match.group(1)
+    json_data = json.loads(json_data)
+    return json_data
+ 
 @app.post("/query")
 async def process_query(data: QueryInput):
-    continue_check = classify_intent(data.query)
-    domain_class = classify_domain(data.query)
-    query_details = query_clarity(data.query)
-    final_response = answer(data.query)
+    previous_context = []
+    continue_check = preprocess_text(classify_intent(data.query))
+
+    # if continue_check["class_type"]=="new_task":
+    #     dump_to_redis()
+    #     previous_context = []
+        
+    # domain_class = preprocess_text(classify_domain(data.query))
+
+    query_details = preprocess_text(query_clarity(data.query))
+    print("Query Details : ", query_details)
+    if query_details["class_type"].lower() == "faq":
+        rag_response = query_booking_rag(data.query)
+        print("FAQ RAG : ",rag_response)
+        previous_context.append({"agent_type":"query_clarity_agent", "query":data.query, "result":rag_response})
+    elif query_details["class_type"].lower() == "booking":
+        # call booking api
+        previous_context.append({"agent_type":"query_clarity_agent", "query":data.query, "result":"The available slots are morning and night"})        
+    elif query_details["class_type"].lower() == "vague":
+        previous_context.append({"agent_type":"query_clarity_agent", "query":data.query, "result":"The query seems vague could you please elaborate."}) 
+    else:
+        previous_context.append({"agent_type":"domain_agent", "query":data.query, "result":"Please ask a question relating to Booking/ FAQ"})
+    
+    final_response = answer(data.query, previous_context)
+    previous_context.append({"agent_type":"answer_agent", "query":data.query, "result":final_response})
+
     return {"response": final_response}
 
 if __name__=="__main__":
