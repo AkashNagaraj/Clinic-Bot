@@ -5,12 +5,13 @@ import tempfile
 import os
 from faster_whisper import WhisperModel
 import sys
-import os
+import requests
 
 # Add the BE directory to sys.path
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'BE')))
 
 from STT import wave2vecrecording, wave2vecpath
+from text_to_speech import main_tts
 
 # Initialize whisper model
 model = WhisperModel("base", device="cpu", compute_type="int8")
@@ -22,9 +23,13 @@ def transcribe_audio(file_path):
 
 # Record mic input
 def record_audio(duration=5, fs=16000):
-    st.info(f"Recording for {duration} seconds...")
-    audio = sd.rec(int(duration * fs), samplerate=fs, channels=1, dtype='int16')
-    recorded_text = wave2vecrecording()
+    status_placeholder = st.empty()
+    status_placeholder.info(f"Recording for {duration} seconds...")
+
+    # Perform recording + transcription
+    recorded_text = wave2vecrecording(duration=duration, fs=fs)
+    status_placeholder.empty()
+
     # st.write(recorded_text)
     return recorded_text
 
@@ -55,14 +60,43 @@ elif mode == "Upload Audio":
             user_input = wave2vecpath(tmp.name) #transcribe_audio(tmp.name)
             os.remove(tmp.name)
 
+def call_orchestrator(query: str):
+    url = "http://127.0.0.1:8030/query"
+    payload = {"query": query}
+    response = requests.post(url, json=payload)
+    if response.status_code == 200:
+        return response.json()["response"]
+    else:
+        return f"Error: {response.status_code} - {response.text}"
+
 # Show result
 if user_input:
-    st.session_state.chat_history.append(("You", user_input))
-    # Call the orchestrator & pass all the history API
-    # Placeholder response (could be an LLM call)
-    response = "Thank you. We'll process your request shortly."
-    st.session_state.chat_history.append(("Bot", response))
+    response = call_orchestrator(user_input)
+
+    # If it's an audio input, store both text and audio
+    if mode in ["Record Audio", "Upload Audio"]:
+        # Save audio to a temporary file or bytes
+        audio_bytes = None
+        audio_path = main_tts(response)
+        audio_bytes = open(audio_path, "rb").read()
+        os.remove(audio_path)
+        # Add user message with audio
+        st.session_state.chat_history.append(("You", user_input, audio_bytes))
+    else:
+        # Just text
+        st.session_state.chat_history.append(("You", user_input, None))
+
+    st.session_state.chat_history.append(("Bot", response, None))
 
 # Display chat history
-for speaker, msg in st.session_state.chat_history:
+for entry in st.session_state.chat_history:
+    if len(entry) == 3:
+        speaker, msg, audio = entry
+    else:
+        speaker, msg = entry
+        audio = None
+
     st.markdown(f"**{speaker}:** {msg}")
+    if audio:
+        st.audio(audio, format='audio/wav')
+
