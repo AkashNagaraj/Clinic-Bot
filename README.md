@@ -3,27 +3,28 @@
 ## Install requirements
 a. ```python -m venv venv```
 
-b. source venv/bin/activate
+b. ```source venv/bin/activate```
 
-c. pip install -r requirements
+c. ```pip install -r requirements```
 
-## Vector DB
+## Install Vector DB
 [Milvus Installation] (https://milvus.io/docs/v2.2.x/install_standalone-docker.md)
 
-## Run Ollama
-OLLAMA_NUM_PARALLEL=4 ollama serve
+## Run Ollama with multiple processes
+```OLLAMA_NUM_PARALLEL=4 ollama serve```
 
 ## Run the Backend
-a. cd BE
+a. ```cd BE```
 
-b. RAG or DB Tools
-python rag_implementations.py
+b. Run the tools (currently RAG and simple API)
+```python rag_implementations.py```
 
 c. Agent Orchestrator
-python main.py
+```python main.py```
 
 ## Run FE
-a. cd FE
+a. ```cd FE```
 
-b. streamlit run app.py
+b. ```streamlit run app.py```
 
+c. ```streamlit run dashboard.py```
