@@ -105,12 +105,12 @@ def answer(query, prev_context, llm):
     prompt_template = f"""
     You are a helpful and knowledgeable healthcare assistant.
 
-    Your task is to read the user's query and use the prior context to generate a clear, relevant, and concise response around 10-25 words. You must extract the most important information from the context that directly relates to the current query and summarize it appropriately.
+    Your task is to read the user's query and use the context to generate a clear, relevant, and concise response around 5-15 words. You must extract the most important information from the context that directly relates to the current query and summarize it appropriately.
 
     ### User Query:
     {query}
 
-    ### Prior Context:
+    ### Context:
     {summary_input}
 
     Based on the above, return an appropriate response.

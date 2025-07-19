@@ -5,8 +5,24 @@ from config import llm
 from agents import intent_agent, domain_agent, query_clarity_agent
 from tasks import classify_intent, query_clarity, answer
 from utils import preprocess_text, query_booking_rag, get_booking_data
+import logging
 
 app = FastAPI()
+
+orchestrator_logs = logging.getLogger("orchestrator")
+orchestrator_logs.setLevel(logging.INFO)
+
+# Prevent duplicate handlers if reloaded
+if not orchestrator_logs.hasHandlers():
+    file_handler = logging.FileHandler("orchestrator.log", mode="a+")
+    formatter = logging.Formatter(
+        "%(asctime)s - %(levelname)s - %(message)s", datefmt="%Y-%m-%d %H:%M:%S"
+    )
+    file_handler.setFormatter(formatter)
+    orchestrator_logs.addHandler(file_handler)
+
+# Optional: avoid logs being passed to root logger
+orchestrator_logs.propagate = False
 
 # User context store
 user_context_store = {}
@@ -14,6 +30,7 @@ user_context_store = {}
 @app.post("/query")
 async def process_query(data: QueryInput):
     user_id = data.user_id
+    
     query = data.query
 
     # Get or initialize context
@@ -66,6 +83,9 @@ async def process_query(data: QueryInput):
 
     # Update context store
     user_context_store[user_id] = previous_context
+    
+    orchestrator_logs.info(f"{user_id} | Query: {query}")
+    orchestrator_logs.info(f"{user_id} | Response: {final_response}")
 
     return {"response": final_response}
 

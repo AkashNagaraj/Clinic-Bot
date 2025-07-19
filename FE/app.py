@@ -1,4 +1,5 @@
 import streamlit as st
+import uuid 
 import sounddevice as sd
 from scipy.io.wavfile import write
 import tempfile
@@ -75,10 +76,15 @@ def main():
     st.title("🩺 Clinic Chat Assistant")
 
     # Input: User ID
-    user_id = st.text_input("Enter your User ID:", key="user_id")
-    if not user_id:
-        st.warning("Please enter a User ID to continue.")
-        return
+    # user_id = st.text_input("Enter your User ID:", key="user_id")
+    # if not user_id:
+    #     st.warning("Please enter a User ID to continue.")
+    #     return
+    if "user_id" not in st.session_state:
+        st.session_state.user_id = str(uuid.uuid4())
+        st.info(f"Session ID: {st.session_state.user_id}")
+    
+    user_id = st.session_state.user_id
 
     # Chat history
     if "chat_history" not in st.session_state:
