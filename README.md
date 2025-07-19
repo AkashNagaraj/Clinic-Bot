@@ -1,7 +1,7 @@
 # Clinic-Bot
 
 ## Install requirements
-a. python -m venv venv
+a. ```python -m venv venv```
 
 b. source venv/bin/activate
 
