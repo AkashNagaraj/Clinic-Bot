@@ -10,8 +10,10 @@ c. ```pip install -r requirements```
 ## Install Vector DB
 [Milvus Installation] (https://milvus.io/docs/v2.2.x/install_standalone-docker.md)
 
-## Run Ollama with multiple processes
-```OLLAMA_NUM_PARALLEL=4 ollama serve```
+## Ollama Setup and execution with multiple processes
+a. [Ollama Installation] (https://ollama.com/)
+
+b. ```OLLAMA_NUM_PARALLEL=4 ollama serve```
 
 ## Run the Backend
 a. ```cd BE```
